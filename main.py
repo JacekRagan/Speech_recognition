@@ -4,12 +4,11 @@ import webbrowser
 import keyboard
 import speech_recognition as sr
 import pyttsx3
+
 yt = 'https://www.youtube.com/'
 chess = 'https://lichess.org/'
 librus = 'https://portal.librus.pl/rodzina/synergia/loguj'
-PATH= "C:\Program Files\Google\Chrome\Application\chrome.exe"
-
-
+PATH = "C:\Program Files\Google\Chrome\Application\chrome.exe"
 
 # Initialize the recognizercls
 r = sr.Recognizer()
@@ -24,6 +23,7 @@ def SpeakText(command):
     engine.runAndWait()
 
 
+SpeakText("Witam sluże do usług")
 # Loop infinitely for user to
 # speak
 while (1):
@@ -35,7 +35,6 @@ while (1):
         # use the microphone as source for input.
         if keyboard.record(until="alt"):
             with sr.Microphone() as source2:
-
                 # wait for a second to let the recognizer
                 # adjust the energy threshold based on
                 # the surrounding noise level
