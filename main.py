@@ -6,6 +6,7 @@ import speech_recognition as sr
 import pyttsx3
 yt = 'https://www.youtube.com/'
 chess = 'https://lichess.org/'
+librus = 'https://portal.librus.pl/rodzina/synergia/loguj'
 PATH= "C:\Program Files\Google\Chrome\Application\chrome.exe"
 
 
@@ -53,6 +54,9 @@ while (1):
         elif MyText == "chess":
             webbrowser.register('chrome', None, webbrowser.BackgroundBrowser(PATH))
             webbrowser.get('chrome').open_new_tab(chess)
+        elif MyText == 'librus':
+            webbrowser.register('chrome', None, webbrowser.BackgroundBrowser(PATH))
+            webbrowser.get('chrome').open_new_tab(librus)
 
 
 
