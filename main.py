@@ -11,7 +11,7 @@ PATH= "C:\Program Files\Google\Chrome\Application\chrome.exe"
 
 
 
-# Initialize the recognizer
+# Initialize the recognizercls
 r = sr.Recognizer()
 
 
@@ -49,12 +49,15 @@ while (1):
                 MyText = MyText.lower()
                 print(f"did u say {MyText}")
         if MyText == "youtube":
+            SpeakText("otwieram youtuba")
             webbrowser.register('chrome', None, webbrowser.BackgroundBrowser(PATH))
             webbrowser.get('chrome').open_new_tab(yt)
         elif MyText == "chess":
+            SpeakText("Otwieram szachy")
             webbrowser.register('chrome', None, webbrowser.BackgroundBrowser(PATH))
             webbrowser.get('chrome').open_new_tab(chess)
         elif MyText == 'librus':
+            SpeakText("Otwieram librusa")
             webbrowser.register('chrome', None, webbrowser.BackgroundBrowser(PATH))
             webbrowser.get('chrome').open_new_tab(librus)
 
