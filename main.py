@@ -7,7 +7,8 @@ import speech_recognition as sr
 import pyttsx3
 import pyautogui as pya
 import time
-
+from datetime import datetime
+from datetime import date
 
 
 yt = 'https://www.youtube.com/'
@@ -40,6 +41,7 @@ while (1):
 
         # use the microphone as source for input.
         if keyboard.record(until="alt"):
+            SpeakText("Slucham Pana")
             with sr.Microphone() as source2:
                 # wait for a second to let the recognizer
                 # adjust the energy threshold based on
@@ -49,7 +51,7 @@ while (1):
                 # listens for the user's input
                 audio2 = r.listen(source2)
 
-                # Using goggle to recognize audio
+                # Using ggogle to recognize audio
                 MyText = r.recognize_google(audio2, language='pl-PL')
                 MyText = MyText.lower()
                 print(f"did u say {MyText}")
@@ -73,9 +75,11 @@ while (1):
             SpeakText("Zamykam komputer")
             cos = pya.confirm('Czy napewno chcesz zamknac komputer?', buttons=['Tak', 'Anuluj'])
             if cos == 'Tak':
-               os.system("shutdown /s /t 1")
+                os.system("shutdown /s /t 1")
             else:
                 continue
+        elif MyText == 'time':
+           SpeakText(datetime.now())
     except sr.RequestError as e:
         print("Could not request results; {0}".format(e))
 
