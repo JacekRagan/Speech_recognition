@@ -1,5 +1,6 @@
 # Python program to translate
 # speech to text and text to speech
+import os
 import webbrowser
 import keyboard
 import speech_recognition as sr
@@ -72,13 +73,7 @@ while (1):
             SpeakText("Zamykam komputer")
             cos = pya.confirm('Czy napewno chcesz zamknac komputer?', buttons=['Tak', 'Anuluj'])
             if cos == 'Tak':
-                time.sleep(1)
-                pya.click(19, 1052)
-                time.sleep(0.5)
-                pya.click(23, 1005)
-                time.sleep(1)
-                pya.click(57, 932)
-                pya.click(57, 932)
+               os.system("shutdown /s /t 1")
             else:
                 continue
     except sr.RequestError as e:
