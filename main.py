@@ -8,12 +8,13 @@ import pyttsx3
 import pyautogui as pya
 import time
 
+
+
 yt = 'https://www.youtube.com/'
 chess = 'https://lichess.org/'
 librus = 'https://portal.librus.pl/rodzina/synergia/loguj'
 twitch = 'https://www.twitch.tv/'
 PATH = "C:\Program Files\Google\Chrome\Application\chrome.exe"
-
 # Initialize the recognizercls
 r = sr.Recognizer()
 
@@ -25,6 +26,7 @@ def SpeakText(command):
     engine = pyttsx3.init()
     engine.say(command)
     engine.runAndWait()
+
 
 
 SpeakText("Witam sluże do usług")
@@ -47,7 +49,7 @@ while (1):
                 # listens for the user's input
                 audio2 = r.listen(source2)
 
-                # Using ggogle to recognize audio
+                # Using goggle to recognize audio
                 MyText = r.recognize_google(audio2, language='pl-PL')
                 MyText = MyText.lower()
                 print(f"did u say {MyText}")
@@ -80,10 +82,6 @@ while (1):
                 pya.click(57, 932)
             else:
                 continue
-
-
-
-
     except sr.RequestError as e:
         print("Could not request results; {0}".format(e))
 
