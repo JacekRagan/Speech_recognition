@@ -1,13 +1,17 @@
 # Python program to translate
 # speech to text and text to speech
+import os
 import webbrowser
 import keyboard
 import speech_recognition as sr
 import pyttsx3
+import pyautogui as pya
+import time
 
 yt = 'https://www.youtube.com/'
 chess = 'https://lichess.org/'
 librus = 'https://portal.librus.pl/rodzina/synergia/loguj'
+twitch = 'https://www.twitch.tv/'
 PATH = "C:\Program Files\Google\Chrome\Application\chrome.exe"
 
 # Initialize the recognizercls
@@ -59,6 +63,24 @@ while (1):
             SpeakText("Otwieram librusa")
             webbrowser.register('chrome', None, webbrowser.BackgroundBrowser(PATH))
             webbrowser.get('chrome').open_new_tab(librus)
+        elif MyText == 'twitch':
+            SpeakText("Otwieram twitch")
+            webbrowser.register('chrome', None, webbrowser.BackgroundBrowser(PATH))
+            webbrowser.get('chrome').open_new_tab(twitch)
+        elif MyText == 'shutdown':
+            SpeakText("Zamykam komputer")
+            cos = pya.confirm('Czy napewno chcesz zamknac komputer?', buttons=['Tak', 'Anuluj'])
+            if cos == 'Tak':
+                time.sleep(1)
+                pya.click(19, 1052)
+                time.sleep(0.5)
+                pya.click(23, 1005)
+                time.sleep(1)
+                pya.click(57, 932)
+                pya.click(57, 932)
+            else:
+                continue
+
 
 
 
