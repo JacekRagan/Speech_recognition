@@ -1,6 +1,5 @@
 # Python program to translate
 # speech to text and text to speech
-import os
 import webbrowser
 import keyboard
 import speech_recognition as sr
