@@ -14,7 +14,7 @@ from playsound import playsound
 
 
 
-
+opgg = 'https://euw.op.gg/summoner/userName=Kaellyneliacel'
 yt = 'https://www.youtube.com/'
 chess = 'https://lichess.org/'
 librus = 'https://portal.librus.pl/rodzina/synergia/loguj'
@@ -37,7 +37,8 @@ def SpeakText(command):
 
 SpeakText(f"Witam sluże do usług{os.getlogin()}")
 playsound('D:\python\music\sound.mp3')
-pya.alert(title="KOMENDY",text=" Youtube, Twitch, Szachy, Librus, Przedstaw sie, Shutdown, Czas, Steam, Szukaj, Github")
+pya.alert(title="KOMENDY",text=" Youtube, Twitch, Szachy, Librus, Przedstaw sie, Shutdown, Czas, Steam, Szukaj, Github, OPGG, Zamknij")
+
 
 # Loop infinitely for user to
 # speak
@@ -48,7 +49,7 @@ while (1):
     try:
 
         # use the microphone as source for input.
-        if keyboard.record(until="alt"):
+        if keyboard.record(until="Page up"):
             SpeakText(f"Slucham {os.getlogin()}")
             with sr.Microphone() as source2:
                 # wait for a second to let the recognizer
@@ -96,21 +97,31 @@ while (1):
             SpeakText("Otwieram Steam")
             os.system("D:\steam\steam.exe")
         elif 'szukaj' in MyText:
-                    SpeakText("szukam")
-                    MyText=MyText.replace("szukaj", "")
-                    url = "google.com/search?q=" + MyText
-                    webbrowser.register('chrome', None,webbrowser.BackgroundBrowser(PATH))
-                    webbrowser.get('chrome').open_new_tab(url)
+            SpeakText("szukam")
+            MyText=MyText.replace("szukaj", "")
+            url = "google.com/search?q=" + MyText
+            webbrowser.register('chrome', None,webbrowser.BackgroundBrowser(PATH))
+            webbrowser.get('chrome').open_new_tab(url)
         elif MyText == 'github':
             SpeakText('Otwieram githuba')
             webbrowser.register('chrome', None, webbrowser.BackgroundBrowser(PATH))
             webbrowser.get('chrome').open_new_tab(github)
+        elif MyText == 'op.gg':
+            SpeakText('Otwieram opgg')
+            webbrowser.register('chrome', None, webbrowser.BackgroundBrowser(PATH))
+            webbrowser.get('chrome').open_new_tab(opgg)
+        elif MyText == 'zamknij':
+            SpeakText("Dowidzenia")
+            break
+
         
 
 
 
     except sr.RequestError as e:
         print("Could not request results; {0}".format(e))
+        SpeakText("Nie zrozumiałam możesz powtórzyć?")
 
     except sr.UnknownValueError:
         print("unknown error occured")
+        SpeakText("Błąd")
