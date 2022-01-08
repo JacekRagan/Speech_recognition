@@ -1,6 +1,7 @@
 # Python program to translate
 # speech to text and text to speech
 import os
+from sys import modules
 import webbrowser
 import keyboard
 import speech_recognition as sr
@@ -9,6 +10,8 @@ import pyautogui as pya
 import time
 from datetime import datetime
 from datetime import date
+from playsound import playsound
+
 
 
 
@@ -16,6 +19,7 @@ yt = 'https://www.youtube.com/'
 chess = 'https://lichess.org/'
 librus = 'https://portal.librus.pl/rodzina/synergia/loguj'
 twitch = 'https://www.twitch.tv/'
+github = 'https://github.com/JacekRagan'
 PATH = "C:\Program Files\Google\Chrome\Application\chrome.exe"
 # Initialize the recognizercls
 r = sr.Recognizer()
@@ -32,7 +36,9 @@ def SpeakText(command):
 
 
 SpeakText(f"Witam sluże do usług{os.getlogin()}")
-pya.alert(title="KOMENDY",text=" Youtube, Twitch, Szachy, Librus, Przedstaw sie, Shutdown, Time,")
+playsound('D:\python\music\sound.mp3')
+pya.alert(title="KOMENDY",text=" Youtube, Twitch, Szachy, Librus, Przedstaw sie, Shutdown, Czas, Steam, Szukaj, Github")
+
 # Loop infinitely for user to
 # speak
 while (1):
@@ -80,10 +86,27 @@ while (1):
                 os.system("shutdown /s /t 1")
             else:
                 continue
-        elif MyText == 'time':
+        elif MyText == 'czas':
            SpeakText(datetime.now())
+
         elif MyText == 'przedstaw sie':
             SpeakText('Jestem Glacier')
+
+        elif MyText == 'steam':
+            SpeakText("Otwieram Steam")
+            os.system("D:\steam\steam.exe")
+        elif 'szukaj' in MyText:
+                    SpeakText("szukam")
+                    MyText=MyText.replace("szukaj", "")
+                    url = "google.com/search?q=" + MyText
+                    webbrowser.register('chrome', None,webbrowser.BackgroundBrowser(PATH))
+                    webbrowser.get('chrome').open_new_tab(url)
+        elif MyText == 'github':
+            SpeakText('Otwieram githuba')
+            webbrowser.register('chrome', None, webbrowser.BackgroundBrowser(PATH))
+            webbrowser.get('chrome').open_new_tab(github)
+        
+
 
 
     except sr.RequestError as e:
