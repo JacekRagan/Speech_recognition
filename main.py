@@ -13,7 +13,7 @@ from datetime import date
 from playsound import playsound
 
 
-
+#sciezki do komend
 opgg = 'https://euw.op.gg/summoner/userName=Kaellyneliacel'
 yt = 'https://www.youtube.com/'
 chess = 'https://lichess.org/'
@@ -37,6 +37,7 @@ def SpeakText(command):
 
 SpeakText(f"Witam sluże do usług{os.getlogin()}")
 playsound('D:\python\music\sound.mp3')
+#komendy ktore ten bot obsluguje 
 pya.alert(title="KOMENDY",text=" Youtube, Twitch, Szachy, Librus, Przedstaw sie, Shutdown, Czas, Steam, Szukaj, Github, OPGG, Zamknij")
 
 
@@ -48,7 +49,7 @@ while (1):
     # exceptions at the runtime
     try:
 
-        # use the microphone as source for input.
+        # Klawisz pod mowienie
         if keyboard.record(until="Page up"):
             SpeakText(f"Slucham {os.getlogin()}")
             with sr.Microphone() as source2:
@@ -60,7 +61,7 @@ while (1):
                 # listens for the user's input
                 audio2 = r.listen(source2)
 
-                # Using ggogle to recognize audio
+                # Jezyk rozpoznawania glosu
                 MyText = r.recognize_google(audio2, language='pl-PL')
                 MyText = MyText.lower()
                 print(f"did u say {MyText}")
