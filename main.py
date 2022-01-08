@@ -91,10 +91,6 @@ while (1):
                 continue
         elif MyText == 'czas':
            SpeakText(datetime.now())
-
-        elif MyText == 'przedstaw sie':
-            SpeakText('Jestem Glacier')
-
         elif MyText == 'steam':
             SpeakText("Otwieram Steam")
             os.system("D:\steam\steam.exe")
