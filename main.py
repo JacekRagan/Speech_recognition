@@ -14,6 +14,7 @@ from playsound import playsound
 
 
 #sciezki do komend
+keydrop = 'https://key-drop.com/en/'
 opgg = 'https://euw.op.gg/summoner/userName=Kaellyneliacel'
 yt = 'https://www.youtube.com/'
 chess = 'https://lichess.org/'
@@ -38,7 +39,7 @@ def SpeakText(command):
 SpeakText(f"Witam sluże do usług{os.getlogin()}")
 playsound('D:\python\music\sound.mp3')
 #komendy ktore ten bot obsluguje 
-pya.alert(title="KOMENDY",text=" Youtube, Twitch, Szachy, Librus, Przedstaw sie, Shutdown, Czas, Steam, Szukaj, Github, OPGG, Zamknij")
+pya.alert(title="KOMENDY",text=" Youtube, Twitch, Szachy, Librus, Przedstaw sie, Shutdown, Czas, Steam, Szukaj, Github, OPGG, Zamknij, Keydrop")
 
 
 # Loop infinitely for user to
@@ -114,6 +115,10 @@ while (1):
         elif MyText == 'zamknij':
             SpeakText("Dowidzenia")
             break
+        elif MyText == 'key-drop':
+            SpeakText('Otwieram keydropa')
+            webbrowser.register('chrome', None, webbrowser.BackgroundBrowser(PATH))
+            webbrowser.get('chrome').open_new_tab(keydrop)
 
         
 
