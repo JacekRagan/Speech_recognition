@@ -11,6 +11,7 @@ from datetime import datetime
 from datetime import date
 
 
+
 yt = 'https://www.youtube.com/'
 chess = 'https://lichess.org/'
 librus = 'https://portal.librus.pl/rodzina/synergia/loguj'
@@ -22,6 +23,7 @@ r = sr.Recognizer()
 
 # Function to convert text to
 # speech
+
 def SpeakText(command):
     # Initialize the engine
     engine = pyttsx3.init()
@@ -29,8 +31,8 @@ def SpeakText(command):
     engine.runAndWait()
 
 
-
-SpeakText("Witam sluże do usług")
+SpeakText(f"Witam sluże do usług{os.getlogin()}")
+pya.alert(title="KOMENDY",text=" Youtube, Twitch, Szachy, Librus, Przedstaw sie, Shutdown, Time,")
 # Loop infinitely for user to
 # speak
 while (1):
@@ -41,7 +43,7 @@ while (1):
 
         # use the microphone as source for input.
         if keyboard.record(until="alt"):
-            SpeakText("Slucham Pana")
+            SpeakText(f"Slucham {os.getlogin()}")
             with sr.Microphone() as source2:
                 # wait for a second to let the recognizer
                 # adjust the energy threshold based on
@@ -59,7 +61,7 @@ while (1):
             SpeakText("otwieram youtuba")
             webbrowser.register('chrome', None, webbrowser.BackgroundBrowser(PATH))
             webbrowser.get('chrome').open_new_tab(yt)
-        elif MyText == "chess":
+        elif MyText == "szachy":
             SpeakText("Otwieram szachy")
             webbrowser.register('chrome', None, webbrowser.BackgroundBrowser(PATH))
             webbrowser.get('chrome').open_new_tab(chess)
@@ -80,6 +82,10 @@ while (1):
                 continue
         elif MyText == 'time':
            SpeakText(datetime.now())
+        elif MyText == 'przedstaw sie':
+            SpeakText('Jestem Glacier')
+
+
     except sr.RequestError as e:
         print("Could not request results; {0}".format(e))
 
